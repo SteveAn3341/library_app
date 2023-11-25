@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>
+  Book
+</title>
+</head> 
+<body> 
+  
+<h1>Books:<h1/>
+
+<ul>
+{%for book in books%}
+<li>{{book}}</li>
+
+<ul>
+<h1>View copy </h1>
+<a href = {%url 'hardcover_detail' book.id %} >Hardcoverbook</a>
+<a href = {%url  'ebook_detail' book.id %} >Ebook</a>
+<a href = {%url  'audio_detail' book.id %} >Audio_book</a>
+<a href = {%url  'paperback_detail' book.id %} >Paperbackbook</a>
+</ul>
+
+<ul>
+<h2>Create_Book_type:</h2>
+<a href = {%url 'hardcoverbook' %}>hardbook</a>    
+<a href = {%url 'ebookbook' %}>ebook</a>   
+<a href = {%url 'audiobook' %}>audiobook</a> 
+<a href = {%url 'paperbackbook' %}>paperbackbook</a>   
+</ul>
+{%endfor%}
+<form action="{% url 'delete_book' %}" method="post">
+  {% csrf_token %}
+  <ul>
+      {% for book in books %} <!-- Ensure this is 'authors', not 'author' -->
+          <li>
+              <input type="checkbox" name="booksToDelete" value="{{ book.id }}">
+              {{ book }}
+          </li>
+      {% endfor %}
+  </ul>
+  <button type="submit">Delete Selected</button>
+</form>
+
+
+
+</ul>
+</body>
+<a href={% url 'index'%}>Go to main page</a>
+</html>
+

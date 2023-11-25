@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Author</title>
+</head> 
+<body> 
+    <h1>Authors:</h1>
+    <form action="{% url 'delete_authors' %}" method="post">
+        {% csrf_token %}
+        <ul>
+            {% for author in author %} <!-- Ensure this is 'authors', not 'author' -->
+                <li>
+                    <input type="checkbox" name="authorsToDelete" value="{{ author.id }}">
+                    {{ author.name }}
+                    <button><a href = {%url 'viewbook' author.id%}>View Book</a></button>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Delete Selected</button>
+    </form>
+
+    <a href="{% url 'index' %}">Go to main page</a>
+</body>
+</html>

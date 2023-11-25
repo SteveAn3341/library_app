@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>
+  Genre
+</title>
+</head> 
+<body> 
+  
+<h1>Genres:<h1/>
+
+<ul>
+<form action="{% url 'delete_genre' %}" method="post">
+  {% csrf_token %}
+  <ul>
+      {% for genre in genre %} <!-- Ensure this is 'authors', not 'author' -->
+          <li>
+              <input type="checkbox" name="genreToDelete" value="{{ genre.id }}">
+              {{ genre}}
+          </li>
+          <button><a href = {%url 'viewgenre' genre.id%}>View All Book</a></button>
+      {% endfor %}
+  </ul>
+  <button type="submit">Delete Selected</button>
+</form>
+
+
+
+</ul>
+</body>
+<a href={% url 'index'%}>Go to main page</a>
+</html>
+
+
