@@ -1,0 +1,14 @@
+<h2>Transaction History</h2>
+<table>
+    <body>
+        {% for transaction in history %}
+            <ul>
+                <li>Book:{{ transaction.book }}, Booktype:{{ transaction.book_type }}, Chekout_date:{{ transaction.checkout_date }}, Returned_date:{{ transaction.returned_date|default:"Not Returned" }}</li>
+            </ul>
+        {% empty %}
+            <tr>
+                <td colspan="3">No transactions found.</td>
+            </tr>
+        {% endfor %}
+    </body>
+</table>

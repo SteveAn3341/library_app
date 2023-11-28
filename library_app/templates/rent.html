@@ -1,0 +1,7 @@
+
+<form method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit">Confirm Rent</button>
+</form>
+<a href={% url 'index'%}>Go to main page</a>

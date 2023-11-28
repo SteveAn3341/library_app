@@ -1,0 +1,5 @@
+
+<h1>All the book list:</h1>
+{%for book in books%}
+<p><a href = {%url 'rent' book.id %}> Rent: {{book}}</p></a>
+{%endfor%}

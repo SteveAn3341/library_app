@@ -1,0 +1,11 @@
+<h1>All the checkouts:</h1>
+<ul>
+{% for checkout in checkout_page %}
+    <li>{{ checkout }}</li>  <!-- Use 'checkout' not 'checkout_page' -->
+    <a href = {%url 'delete_rent' checkout.id%}>Delete</a>
+    <a href = {%url 'return_rent' checkout.id%}>Return_rent</a>
+{% endfor %}
+</ul>
+
+
+<a href={% url 'index'%}>Go to main page</a>
